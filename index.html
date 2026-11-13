@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Langa Complex | Tuckshop, Internet & Bakery</title>
+    
+    <!-- Link Manifest Profile & App Theme Color -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e3a8a">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Register Background Service Worker for App Installation -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then(reg => console.log('App Service Worker Registered!', reg))
+            .catch(err => console.log('Registration Failed', err));
+        });
+      }
+    </script>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="logo">Langa Complex</div>
+        <nav>
+            <a href="#services">Our Services</a>
+            <a href="#bakery-gallery">Gallery</a>
+            <a href="#menu">Order Online</a>
+            <a href="#cart" id="cart-nav">🛒 Cart (0)</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Langa Complex</h1>
+        <p>Your one-stop destination for daily essentials, fresh baking, and reliable internet services.</p>
+        <a href="#menu" class="btn">Browse & Order Now</a>
+    </section>
+
+    <!-- Business Pillars -->
+    <section id="services" class="services">
+        <h2>What We Offer</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>🛒 Tuckshop</h3>
+                <p>Daily essentials, snacks, cold drinks, and household necessities right when you need them.</p>
+            </div>
+            <div class="service-card">
+                <h3>🌐 Internet Services</h3>
+                <p>High-speed browsing, printing, scanning, and document assistance available in-store.</p>
+            </div>
+            <div class="service-card">
+                <h3>🍞 Bakery</h3>
+                <p>Freshly baked bread, sweet treats, custom celebration cakes, and daily bakes prepared morning with love.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bakery Gallery Section -->
+    <section id="bakery-gallery" class="gallery-section">
+        <h2>Fresh From Our Bakery</h2>
+        <p class="section-subtitle">Take a look at our delicious treats and custom celebration cakes!</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/birthday-cake.jpg" alt="Confetti Birthday Cake with Chocolate Frosting">
+                <div class="gallery-overlay"><h4>Celebration Layer Cakes</h4></div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/chocolate-cake.jpg" alt="Rich Double Chocolate Specialty Cake">
+                <div class="gallery-overlay"><h4>Specialty Chocolate Cakes</h4></div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/scones.jpg" alt="Freshly Baked Golden Scones">
+                <div class="gallery-overlay"><h4>Fresh Scones</h4></div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/bread.jpg" alt="Daily Farmhouse White Bread">
+                <div class="gallery-overlay"><h4>Daily Fresh Bread</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Menu -->
+    <section id="menu" class="menu">
+        <h2>Our Menu & Items</h2>
+        <div class="menu-grid">
+            <!-- Bakery Item -->
+            <div class="menu-item" data-id="1" data-name="Fresh White Bread" data-price="15.00">
+                <div class="item-tag">Bakery</div>
+                <h3>Fresh White Bread</h3>
+                <p class="price">R15.00</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <!-- Tuckshop Item -->
+            <div class="menu-item" data-id="2" data-name="Cold Beverage (330ml)" data-price="12.00">
+                <div class="item-tag">Tuckshop</div>
+                <h3>Cold Beverage (330ml)</h3>
+                <p class="price">R12.00</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <!-- Internet Service Item -->
+            <div class="menu-item" data-id="3" data-name="1 Hour Internet Session" data-price="20.00">
+                <div class="item-tag">Internet</div>
+                <h3>1 Hour Internet Session</h3>
+                <p class="price">R20.00</p>
+                <button class="add-to-cart-btn">Book Session</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart & Checkout -->
+    <section id="cart" class="cart-section">
+        <h2>Your Shopping Cart</h2>
+        <div class="cart-container">
+            <div id="cart-items" class="cart-items">
+                <p class="empty-message">Your cart is empty.</p>
+            </div>
+            
+            <div class="checkout-form-container">
+                <h3>Order Summary</h3>
+                <p class="total-price">Total: <span id="cart-total">R0.00</span></p>
+                
+                <form id="order-form">
+                    <input type="text" id="cust-name" placeholder="Your Name" required>
+                    <input type="tel" id="cust-phone" placeholder="Phone Number" required>
+                    
+                    <label for="order-type">Fulfillment Method:</label>
+                    <select id="order-type" required>
+                        <option value="Collection">Collection / In-Store Pickup</option>
+                        <option value="Delivery">Delivery</option>
+                    </select>
+                    
+                    <textarea id="cust-address" placeholder="Delivery Address (Leave blank if choosing collection)" rows="3"></textarea>
+                    
+                    <button type="submit" class="btn checkout-btn">Place Order via WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Langa Complex. All Rights Reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
